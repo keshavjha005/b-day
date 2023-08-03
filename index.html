@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script> 
+      
+      <script src="https://cdn.rawgit.com/skulpt/skulpt-dist/0.11.0/skulpt.min.js"></script>
+      
+      
+      <script src="https://cdn.rawgit.com/skulpt/skulpt-dist/0.11.0/skulpt-stdlib.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+        link <script src="index.js"></script>
+    </head>
+    <body>
+        
+        <div id="cnv">
+        </div>
+        <div id="buttons">
+        </div>
+        <div id="sliders">
+        </div>
+        
+     <textarea id="yourcode" cols="200" rows="200">
+
+        
+"""
+_ver = "1.1b- -Turtle-    -15.6.2019"
+
+_ver = "Happy Birthday 1.1c- -             for python 3.7    -    15. 6. 2019"
+
+__author__ = "developer keshav"
+
+__version__ = "0.1"
+
+
+__copyright__ = "copyright (c) 2023 developer keshav. All rights reserved."
+
+"""
+import turtle 
+import random
+
+alphabet = {
+    'A': ((0,0),(0.5,1),(0.75,0.5),(0.25,0.5),(0.75,0.5),(1,0)),
+    'B': ((0,0),(0,1),(0.625 ,1),(0.75,0.875),(0.75,0.625),(0.625,0.5),(0,0.5),(0.625,0.5),(0.75,0.375),(0.75,0.125),(0.625,0),(0,0)),
+    'C': ((0.75,0.125),(0.625,0),(0.125,0),(0,0.125),(0,0.875),(0.125,1),(0.625,1),(0.75,0.875)),
+    'D': ((0,0),(0,1),(0.625 ,1),(0.75,0.875),(0.75,0.125),(0.625,0),(0,0)),
+    'E': ((0.75,0),(0,0),(0,0.5),(0.75,0.5),(0,0.5),(0,1),(0.75,1)),
+    'F': ((0,0),(0,0.5),(0.75,0.5),(0,0.5),(0,1),(0.75,1)),
+    'G': ((0.75,0.5),(0.625,0.5),(0.75,0.5),(0.75,0.125),(0.625,0),(0.125,0),(0,0.125),(0,0.875),(0.125,1),(0.625,1),(0.75,0.875)),
+    'H': ((0,0),(0,1),(0,0.5),(0.75,0.5),(0.75,1),(0.75,0)),
+    'I': ((0,0),(0.25,0),(0.125,0),(0.125,1),(0,1),(0.25,1)),
+    'J': ((0,0.125),(0.125,0),(0.375,0),(0.5,0.125),(0.5,1)),
+    'K': ((0,0),(0,1),(0,0.5),(0.75,1),(0,0.5),(0.75,0)),
+    'L': ((0,0),(0,1),(0,0),(0.75,0)),
+    'M': ((0,0),(0,1),(0.5,0),(1,1),(1,0)),
+    'N': ((0,0),(0,1),(0.75,0),(0.75,1)),
+    'O': ((0.75,0.125),(0.625,0),(0.125,0),(0,0.125),(0,0.875),(0.125,1),(0.625,1),(0.75,0.875),(0.75,0.125)),
+    'P': ((0,0),(0,1),(0.625,1),(0.75,0.875),(0.75,0.625),(0.625,0.5),(0,0.5)),
+    'Q': ((0.75,0.125),(0.625,0),(0.125,0),(0,0.125),(0,0.875),(0.125,1),(0.625,1),(0.75,0.875),(0.75,0.125),(0.875,0)),
+    'R': ((0,0),(0,1),(0.625,1),(0.75,0.875),(0.75,0.625),(0.625,0.5),(0,0.5),(0.625,0.5),(0.875,0)),
+    'S': ((0,0.125),(0.125,0),(0.625,0),(0.75,0.125),(0.75,0.375),(0.675,0.5),(0.125,0.5),(0,0.625),(0,0.875),(0.125,1),(0.625,1),(0.75,0.875)),
+    'T': ((0,1),(0.5,1),(0.5,0),(0.5,1),(1,1)),
+    'U': ((0,1),(0,0.125),(0.125,0),(0.625,0),(0.75,0.125),(0.75,1)),
+    'V': ((0,1),(0.375,0),(0.75,1)),
+    'W': ((0,1),(0.25,0),(0.5,1),(0.75,0),(1,1)),
+    'X': ((0,0),(0.375,0.5),(0,1),(0.375,0.5),(0.75,1),(0.375,0.5),(0.75,0)),
+    'Y': ((0,1),(0.375,0.5),(0.375,0),(0.375,0.5),(0.75,1)),
+    'Z': ((0,1),(0.75,1),(0,0),(0.75,0)),
+}
+
+myPen = turtle.Turtle()
+myPen.speed(0)
+window = turtle.Screen()
+window.bgcolor("#000000")
+myPen.pensize(2)
+
+def displayMessage(message,fontSize,color,x,y, colors=None):
+    myPen.color(color)
+    message=message.upper()
+  
+    for i, character in enumerate(message):
+        if character in alphabet:
+            if(colors):
+                myPen.color(colors[i%len(colors)])
+            letter=alphabet[character]
+            myPen.penup()
+            for dot in letter:
+                myPen.goto(x + dot[0]*fontSize, y + dot[1]*fontSize)
+                myPen.pendown()
+        
+            x += fontSize
+      
+        if character == " ":
+            x += fontSize
+        x += characterSpacing 
+
+#Main Program Starts Here
+fontSize = 10
+characterSpacing = 3
+fontColor = "#FF00FF"
+
+
+
+msg1 = "Happy Birthday REEMA "
+msg2 = "Created by developer keshav"
+
+colors = ["red", "blue", "green", "orange", "cyan", "yellow"]
+displayMessage(msg1,fontSize,fontColor,-190,100, colors)
+displayMessage(msg2,fontSize,fontColor,-190,0, colors)
+myPen.hideturtle()
+
+
+    </textarea>
+      <pre id="output" ></pre>
+      <div>Turtle Output:</div>
+      <div id="mycanvas"></div><br />
+      
+            <br />
+            
+            
+<marquee width="60%" direction="left" height="100px">
+    HAPPIEST BIRTHDAY REEMA 🎂🎂.
+     </marquee>
+    
+    <center>
+  <table BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" BGCOLOR="#000000" >
+    <tr> 
+      <td> <center>
+           <font face="Verdana, Arial, Helvetica, sana-serif"><b><font color="#FF00a"><font size=-2>COPYRIGHT &copy;<script>document.write(new Date().getFullYear());</script> developer keshav.  | ALL RIGHTS RESERVED.</font></font></b></font>
+      </center></td>
+    </tr>
+  </table>
+</center>
+    </body>
+</html>
+
+

@@ -1,0 +1,19 @@
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: red;
+}
+
+#yourcode {
+    display: none;
+}
+
+#mycanvas{
+    border: 1px solid black;
+    width: 100%;
+}
+/*
+               
+*/
